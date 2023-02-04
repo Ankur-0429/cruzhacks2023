@@ -1,0 +1,44 @@
+{
+  "expo": {
+    "name": "slugswap",
+    "slug": "slugswap",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/images/slugIcon.jpeg",
+    "scheme": "com.aankur01.slugswap",
+    "userInterfaceStyle": "automatic",
+    "plugins": [
+      "expo-apple-authentication",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "The app accesses your photos to let you share them with your friends."
+        }
+      ]
+    ],
+    "splash": {
+      "image": "./assets/images/slugIcon.jpeg",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": ["**/*"],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.aankur01.slugswap",
+      "usesAppleSignIn": true
+    },
+    "android": {
+      "package": "com.aankur01.slugswap",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/images/slugIcon.jpeg",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/images/slugIcon.jpeg"
+    }
+  }
+}
