@@ -18,6 +18,7 @@ export type RootStackParamList = {
   Modal: undefined;
   NotFound: undefined;
   Register: undefined;
+  Login: undefined;
   UserCreate: undefined;
   message: {uid: string};
 };
@@ -60,6 +61,7 @@ export type PostType = {
 }
 
 export type RootTabParamList = {
+  TabThree: undefined;
   TabOne: undefined;
   TabTwo: undefined;
 };

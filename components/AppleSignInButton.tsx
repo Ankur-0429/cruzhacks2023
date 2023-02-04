@@ -16,9 +16,9 @@ export default function AppleSignInButton({navigation}: any) {
     <View>
       <AppleAuthentication.AppleAuthenticationButton
         buttonType={AppleAuthentication.AppleAuthenticationButtonType.SIGN_IN}
-        buttonStyle={colorScheme === "dark" ? AppleAuthentication.AppleAuthenticationButtonStyle.WHITE : AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
+        buttonStyle={AppleAuthentication.AppleAuthenticationButtonStyle.BLACK}
         cornerRadius={5}
-        style={{width: 250, height: 50}}
+        style={{width: 250, height: 50, alignSelf: 'center'}}
         onPress={async () => {
           try {
             const nonce = Math.random().toString(36).substring(2, 10);

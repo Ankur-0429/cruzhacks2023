@@ -9,18 +9,19 @@ import { NavigationContainer, DefaultTheme, DarkTheme, useNavigation } from '@re
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useAtom } from 'jotai';
 import * as React from 'react';
-import { ColorSchemeName, Pressable } from 'react-native';
+import { Pressable } from 'react-native';
 import { Avatar } from 'react-native-elements';
 import { currentUser, ifSignedIn } from '../constants/Atoms';
 
 import Colors from '../constants/Colors';
-import useColorScheme from '../hooks/useColorScheme';
 import CreateUserScreen from '../screens/CreateUserScreen';
+import LoginScreen from '../screens/LoginScreen';
 import MessageScreen from '../screens/MessageScreen';
 import ModalScreen from '../screens/ModalScreen';
 import NotFoundScreen from '../screens/NotFoundScreen';
-import SignInScreen from '../screens/SignInScreen';
+import RegisterScreen from '../screens/RegisterScreen';
 import TabOneScreen from '../screens/TabOneScreen';
+import TabThreeScreen from '../screens/TabThreeScreen';
 import TabTwoScreen from '../screens/TabTwoScreen';
 import { RootStackParamList, RootTabParamList, RootTabScreenProps } from '../types';
 import LinkingConfiguration from './LinkingConfiguration';
@@ -55,7 +56,7 @@ function RootNavigator() {
 
   return (
     <Stack.Navigator>
-      {true
+      {checkIfSignedIn
       ?
       <Stack.Group>
         <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerTransparent: true, headerBlurEffect: 'systemUltraThinMaterialLight', headerTitle: '', headerBackVisible: false, headerRight: headerRight}} />
@@ -67,7 +68,8 @@ function RootNavigator() {
       </Stack.Group>
       :
       <Stack.Group screenOptions={{headerTransparent: true, headerBlurEffect: 'systemUltraThinMaterialLight', headerTitle: '', headerBackVisible: false}}>
-        <Stack.Screen name="Register" component={SignInScreen} />
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="UserCreate" component={CreateUserScreen} />
       </Stack.Group>
       }
@@ -119,6 +121,15 @@ function BottomTabNavigator() {
         options={{
           title: 'Tab Two',
           tabBarIcon: ({ color }) => <MaterialCommunityIcons name="message-text-outline" size={30} color={color} />,
+        }}
+      />
+
+      <BottomTab.Screen
+        name="TabThree"
+        component={TabThreeScreen}
+        options={{
+          title: 'Tab Two',
+          tabBarIcon: ({ color }) => <MaterialCommunityIcons name="account" size={30} color={color} />,
         }}
       />
     </BottomTab.Navigator>

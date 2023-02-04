@@ -1,8 +1,9 @@
-const tintColorLight = '#6952a5';
+const tintColorLight = '#cd9705';
 
 export default {
   constants: {
-    primary: '#6750a4'
+    primary: '#6750a4',
+    secondary: '#1a73d4',
   },
   light: {
     text: '#000',

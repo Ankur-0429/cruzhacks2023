@@ -53,7 +53,7 @@ export default function GoogleSignInButton({navigation}: any) {
 
   return (
     // @ts-ignore
-    <SocialIcon onPress={() => {promptAsync()}} fontStyle={{color: colorScheme === "dark" ? "black":"white"}} iconStyle={{color: colorScheme === "dark" ? "black":"white"}} light={colorScheme === "dark"} title='Sign in with Google' button style={{width: 250, borderRadius: 5,}} type='google'
+    <SocialIcon onPress={() => {promptAsync()}} fontStyle={{color: "white"}} iconStyle={{color: "white"}} light={false} title='Sign in with Google' button style={{width: 250, borderRadius: 5,}} type='google'
     />
   );
 }

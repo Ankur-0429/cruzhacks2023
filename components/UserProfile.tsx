@@ -25,7 +25,6 @@ const UserProfile = ({profileUri, name, bio, collegeAffiliation, slugPoints, wan
                 <Image source={{uri: profileUri}} style={{width: 50, height: 50, borderRadius: 25, overflow: 'hidden', marginHorizontal: 10}} />
                 <View style={{backgroundColor: boxColor}}>
                   <Text style={{fontWeight: '500', fontSize: 17}}>{name}</Text>
-                  <Text style={{opacity: 0.8, fontSize: 12}}>{slugPoints} slugPoints</Text>
                   <View style={{backgroundColor: 'transparent', flexDirection: 'row'}}>
                     <Rating
                       showRating={false}
@@ -34,13 +33,14 @@ const UserProfile = ({profileUri, name, bio, collegeAffiliation, slugPoints, wan
                       imageSize={14}
                       onFinishRating={() => {}}
                     />
-                    <Text style={{color: '#3E3E3EA1'}}>test</Text>
+                    <Text style={{color: '#3E3E3EA1'}}>2.5 Rating / 943 Reviews</Text>
                   </View>
                 </View>
               </View>
               <Text style={styles.paragraph}>
                 {bio}
               </Text>
+              <Text style={styles.paragraph}>{slugPoints} slug points, {collegeAffiliation}</Text>
               <View style={{backgroundColor: 'transparent', marginHorizontal: 20, marginTop: 10}}>
                 <FollowButton uid={uid} wantsSlugPoints={wantsSlugPoints} />
               </View>
