@@ -55,7 +55,7 @@ function RootNavigator() {
 
   return (
     <Stack.Navigator>
-      {true
+      {checkIfSignedIn
       ?
       <Stack.Group>
         <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerTransparent: true, headerBlurEffect: 'systemUltraThinMaterialLight', headerTitle: '', headerBackVisible: false, headerRight: headerRight}} />
