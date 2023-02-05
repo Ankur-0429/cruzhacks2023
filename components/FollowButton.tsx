@@ -1,9 +1,10 @@
 import { useNavigation } from "@react-navigation/native";
 import { useState } from "react";
-import { Button } from "react-native-paper";
 import follow from "../api/follow";
 import Colors from "../constants/Colors";
 import useConnection from "../hooks/useConnection";
+import { Text } from "./Themed";
+import {Button} from 'native-base';
 
 interface FollowButtonProps {
     wantsSlugPoints ?: boolean;
@@ -21,27 +22,16 @@ const FollowButton = ({wantsSlugPoints, uid}: FollowButtonProps) => {
         if (requested.includes(uid)) {
             return "Requested";
         }
-        return wantsSlugPoints ? "Request SlugPoints" : "Give SlugPoints";
-    }
-
-    const get_icon = () => {
-        if (requested.includes(uid)) {
-            return "account";
-        }
-        if (dms.includes(uid)) {
-            return "message"
-        }
-        return wantsSlugPoints ? "currency-usd" : "send";
+        return wantsSlugPoints ? "Request" : "Share";
     }
 
     const text = get_text();
-    const icon = get_icon();
 
     const navigation = useNavigation();
 
     return (
-        <Button loading={loading} buttonColor={text === "Requested" ? "grey":Colors.constants.primary} icon={icon} mode="contained" onPress={async () => {
-            if (text === "Give SlugPoints" || text === "Request SlugPoints") {
+        <Button isLoading={loading} style={{width: 90, marginLeft: 'auto', borderRadius: 10, opacity: text === "Requested" ? 0.8:1, backgroundColor: '#dcb650'}} onPress={async () => {
+            if (text === "Share" || text === "Request") {
                 setLoading(true);
                 await follow(uid);
                 setLoading(false);
@@ -50,7 +40,9 @@ const FollowButton = ({wantsSlugPoints, uid}: FollowButtonProps) => {
                 navigation.navigate("message", {uid: uid})
             }
         }}>
-            {text}
+            <Text style={{fontSize: 12, color: 'white'}}>
+                {text}
+            </Text>
         </Button>
     )
 }

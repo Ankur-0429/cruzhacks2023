@@ -20,12 +20,11 @@ const MessageScreen = () => {
 
   const colorScheme = useColorScheme();
   const [currUser] = useAtom(currentUser);
-  const {user} = useUser(currUser!.uid);
-
+  
   const route = useRoute();
   // @ts-ignore
   const message_uid = route.params!.uid as string;
-
+  const {user} = useUser(message_uid);
   const firestore = getFirestore();
   const dmRef = collection(firestore, "dms");
   let users = [message_uid, currUser?.uid];
@@ -51,7 +50,7 @@ const MessageScreen = () => {
   return (
     <KeyboardAvoidingView
       behavior={Platform.OS === "ios" ? "padding" : "height"}
-      keyboardVerticalOffset={80}
+      keyboardVerticalOffset={100}
       style={[
         {
           width: "100%",

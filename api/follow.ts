@@ -25,11 +25,7 @@ const follow = async (uid: string) => {
        const data = docSnap.data();
        check = data.following.includes(currentUser)
     }
-
-    // user already follows you back,
-    // meaning we remove your follower request
-    // else we give a follower request to the other
-    // user
+    
     if (check) {
         await updateDoc(doc(db, "follower_request", currentUser), {
             follower_request: arrayRemove(uid),

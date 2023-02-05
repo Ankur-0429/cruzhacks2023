@@ -9,6 +9,7 @@ import { Feather } from "@expo/vector-icons";
 import follow from '../api/follow';
 import { useNavigation } from '@react-navigation/native';
 import Colors from '../constants/Colors';
+import AddPostButton from '../components/AddPostButton';
 
 interface DirectMessageUserProps {
   uid: string;
@@ -23,9 +24,11 @@ const DirectMessageUser = ({uid, index}: DirectMessageUserProps) => {
   
   return (
     <View style={{marginBottom: 20}}>
-      <Text style={{fontWeight: 'bold', fontSize: 30, marginBottom: 5}}>{index === 0 && "Direct Message"}</Text>
+      {index === 0 &&
+        <Text style={{fontWeight: 'bold', fontSize: 30, marginBottom: 30, marginLeft: 10}}>{index === 0 && "Direct Message"}</Text>
+      }
       <View>
-          <View style={{backgroundColor: boxColor, borderRadius: 10, paddingVertical: 10}}>
+          <View style={{backgroundColor: boxColor, borderRadius: 10, paddingVertical: 10, marginHorizontal: 40}}>
             <View style={{flexDirection: 'row', backgroundColor: boxColor}}>
               <Image source={{uri: user?.image}} style={{width: 50, height: 50, borderRadius: 25, overflow: 'hidden', marginHorizontal: 10}} />
               <View style={{backgroundColor: boxColor, marginTop: 8}}>
@@ -51,13 +54,15 @@ const DirectMessageUser = ({uid, index}: DirectMessageUserProps) => {
 const FollowerRequestUser = ({uid, index}: DirectMessageUserProps) => {
   const {user} = useUser(uid);
   const colorScheme = useColorScheme();
-  const boxColor = colorScheme === "dark" ? "#1c1c1e" : "#ccc";
+  const boxColor = Colors.light.box;
   
   return (
     <View style={{marginBottom: 20}}>
-      <Text style={{fontWeight: 'bold', fontSize: 30, marginBottom: 5}}>{index === 0 && "Follower Request"}</Text>
+      {index === 0 &&
+        <Text style={{fontWeight: 'bold', fontSize: 30, marginBottom: 30, marginLeft: 10}}>{index === 0 && "Follower Requests"}</Text>
+      }
       <View>
-          <View style={{backgroundColor: boxColor, borderRadius: 10, paddingVertical: 10}}>
+          <View style={{backgroundColor: boxColor, borderRadius: 10, paddingVertical: 10, marginHorizontal: 40}}>
             <View style={{flexDirection: 'row', backgroundColor: boxColor}}>
               <Image source={{uri: user?.image}} style={{width: 50, height: 50, borderRadius: 25, overflow: 'hidden', marginHorizontal: 10}} />
               <View style={{backgroundColor: boxColor, marginTop: 8}}>
@@ -86,14 +91,17 @@ export default function TabTwoScreen() {
   const {dms, request} = useConnection();
 
   return (
-    <View style={styles.container}>
-      <FlatList contentContainerStyle={{marginVertical: 20, marginTop: 150}} data={dms} renderItem={
-        ({item, index}) => <DirectMessageUser uid={item} index={index} />
-      } />
+    <View style={{flex: 1}}>
+      <AddPostButton />
+      <View style={styles.container}>
+        <FlatList contentContainerStyle={{marginVertical: 20, marginTop: 150}} data={dms} renderItem={
+          ({item, index}) => <DirectMessageUser uid={item} index={index} />
+        } />
 
-      <FlatList data={request} renderItem={
-        ({item, index}) => <FollowerRequestUser uid={item} index={index} />
-      } />
+        <FlatList data={request} renderItem={
+          ({item, index}) => <FollowerRequestUser uid={item} index={index} />
+        } />
+      </View>
     </View>
   );
 }

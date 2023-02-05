@@ -2,13 +2,12 @@
 import { View, Text } from '../components/Themed';
 import { Pressable, StyleSheet } from "react-native";
 
-import {Accessory, Avatar } from 'react-native-elements';
+import {Avatar } from 'react-native-elements';
 import { useAtom } from 'jotai';
 import { currentUser } from '../constants/Atoms';
 import {Button, Icon, Input, Stack} from 'native-base';
 import { MaterialIcons } from '@expo/vector-icons';
 import React from 'react';
-import AddPostButton from '../components/AddPostButton';
 
 const Example = () => {
   const [show, setShow] = React.useState(false);
@@ -20,49 +19,38 @@ const Example = () => {
       <Stack space={4} w="100%" alignItems="center">
           <Input variant="rounded" w={{
           md: "25%"
-          }} h={10} InputLeftElement={<Icon as={<MaterialIcons name="email" />} size={5} ml="2" color="muted.400" />} placeholder="Email" />
+          }} h={10} placeholder="Enter your Slug Points Amount" />
           <Input variant="rounded" w={{
           md: "25%"
-          }} h={10} type={show ? "text" : "password"} InputRightElement={<Pressable onPress={() => setShow(!show)}>
-                  <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
-              </Pressable>} placeholder="Password" />
-            
-              <Input variant="rounded" w={{
-          md: "25%"
-          }} h={10} type={show ? "text" : "password"} InputRightElement={<Pressable onPress={() => setShow(!show)}>
-                  <Icon as={<MaterialIcons name={show ? "visibility" : "visibility-off"} />} size={5} mr="2" color="muted.400" />
-          </Pressable>} placeholder="Confirm Password" />
+          }} h={10} type={show ? "text" : "password"} size={5} mr="2" color="muted.400" placeholder="Choose a Dining Hall" />
       </Stack>        
     </Stack>;
 };
 
-export default function TabThreeScreen() {
+export default function CreatePostScreen() {
 
   const [currUser] = useAtom(currentUser);
 
   return (
     <View style={styles.container}>
-        <AddPostButton />
 
-        <Button style={{width: 90, marginLeft: 'auto', marginBottom: 50, marginRight: 20, borderRadius: 10, backgroundColor: '#dcb650'}} onPress={async () => {}}>
+        <Button style={{width: 90, marginLeft: 'auto', marginBottom: 50, marginRight: 20, borderRadius: 10, backgroundColor: '#dcb650', opacity: 0.7}} onPress={async () => {}}>
             <Text style={{fontSize: 12, color: 'white'}}>
-                Save
+                Post
             </Text>
         </Button>
     
       
-      <Text style={{width: 300, color: '#3E3E3E', lineHeight: 24, marginBottom: 30, fontWeight: "400", alignSelf: 'center', textAlign: 'center'}}>Add a photo, username, and bio let people know who you are.</Text>
       {/* @ts-ignore */}
       <Avatar
-        size="xlarge"
+        size="medium"
         rounded
-        containerStyle={{alignSelf: 'center'}}
+        containerStyle={{marginLeft: 60}}
         source={{
           uri:
             currUser?.image,
         }}
         >
-        <Accessory size={35} />
       </Avatar>
       <Example/>
     </View>
@@ -71,7 +59,7 @@ export default function TabThreeScreen() {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 120,
+    marginTop: 20,
     flex: 1,
   },
   title: {

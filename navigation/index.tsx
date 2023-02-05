@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/getting-started
  *
  */
-import { Feather, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
+import { AntDesign, Feather, FontAwesome, MaterialCommunityIcons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer, DefaultTheme, DarkTheme, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -14,6 +14,7 @@ import { Avatar } from 'react-native-elements';
 import { currentUser, ifSignedIn } from '../constants/Atoms';
 
 import Colors from '../constants/Colors';
+import CreatePostScreen from '../screens/CreatePostScreen';
 import CreateUserScreen from '../screens/CreateUserScreen';
 import LoginScreen from '../screens/LoginScreen';
 import MessageScreen from '../screens/MessageScreen';
@@ -61,9 +62,10 @@ function RootNavigator() {
       <Stack.Group>
         <Stack.Screen name="Root" component={BottomTabNavigator} options={{headerTransparent: true, headerBlurEffect: 'systemUltraThinMaterialLight', headerTitle: '', headerBackVisible: false, headerRight: headerRight}} />
         <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
-        <Stack.Screen name="message" component={MessageScreen} initialParams={{uid: ''}} />
+        <Stack.Screen name="message" component={MessageScreen} initialParams={{uid: ''}} options={{headerRight: () => <AntDesign name="heart" size={24} color="#dcb650" />}} />
         <Stack.Group screenOptions={{ presentation: 'modal' }}>
           <Stack.Screen name="Modal" options={{headerTitle: 'Edit Profile'}} component={ModalScreen} />
+          <Stack.Screen name="CreatePost" component={CreatePostScreen} options={{headerTitle: 'Create Post'}} />
         </Stack.Group>
       </Stack.Group>
       :

@@ -31,7 +31,7 @@ const AddPostButton = () => {
         width={60}
         height={60}
         onPress={() => {
-            //   navigation.navigate('CreateTitle');
+            navigation.navigate('CreatePost');
         }}
         style={{backgroundColor: "#011638"}}>
         <Feather name="plus" size={30} color="white" style={styles.feather} />
