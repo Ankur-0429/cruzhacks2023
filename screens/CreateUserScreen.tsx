@@ -28,7 +28,6 @@ import { currentUser, ifSignedIn } from '../constants/Atoms';
 import Colors from '../constants/Colors';
 
 const DropDown = ({setSelected, data, title}:DropDownProps) => {
-  const colorScheme = useColorScheme();
   const boxColor = Colors.light.box;
   
   return(
@@ -37,11 +36,11 @@ const DropDown = ({setSelected, data, title}:DropDownProps) => {
       <SelectList
           setSelected={(val: any) => setSelected(val)} 
           dropdownStyles={{backgroundColor:  boxColor, borderColor: 'transparent'}}
-          arrowicon={<FontAwesome name="chevron-down" size={12} color={colorScheme === "dark" ? "white":"black"} />} 
-          searchicon={<FontAwesome name="search" size={12} style={{marginRight: 5}} color={colorScheme === "dark" ? "white":"black"} />} 
-          closeicon={<FontAwesome name="close" size={12} color={colorScheme === "dark" ? "white":"black"} />}
-          inputStyles={{color: colorScheme === "dark" ? "white":"black"}}
-          dropdownTextStyles={{color: colorScheme === "dark" ? "white":"black"}}
+          arrowicon={<FontAwesome name="chevron-down" size={12} color={"black"} />} 
+          searchicon={<FontAwesome name="search" size={12} style={{marginRight: 5}} color={"black"} />} 
+          closeicon={<FontAwesome name="close" size={12} color={"black"} />}
+          inputStyles={{color: "black"}}
+          dropdownTextStyles={{color: "black"}}
           boxStyles={{backgroundColor: boxColor, borderColor: 'transparent', width: 250}}
           data={data} 
           save="value"
@@ -76,7 +75,6 @@ export default function CreateUserScreen() {
   const [ifSendSlugPoints, setIfSendSlugPoints] = useState(undefined as undefined | string);
   const [bio, setBio] = useState(undefined as undefined | string);
   const [slugPoints, setSlugPoints] = useState(undefined as undefined | string);
-  const colorSheme = useColorScheme();
   const [image, setImage] = useState(null as any);
   const [submitButtonLoading, setSubmitButtonLoading] = useState(false);
   const auth = getAuth();
@@ -99,7 +97,7 @@ export default function CreateUserScreen() {
     }
   };
 
-  const text_color = colorSheme === "dark" ? "white":"black";
+  const text_color = "black";
 
   return (
     <View style={styles.container}>
@@ -121,7 +119,7 @@ export default function CreateUserScreen() {
       <View>
         <Text style={{paddingLeft: 8}}>Bio</Text>
         <TextInput
-          style={[styles.input, {backgroundColor: colorSheme === "dark" ? "#1c1c1e":"#ccc", color: text_color}]}
+          style={[styles.input, {backgroundColor: "#ccc", color: text_color}]}
           selectionColor={text_color}
           placeholderTextColor={text_color}
           onChangeText={(text) => {setBio(text)}}
@@ -133,7 +131,7 @@ export default function CreateUserScreen() {
       <View>
         <Text style={{paddingLeft: 8}}>Full Name</Text>
         <TextInput
-          style={[styles.input, {backgroundColor: colorSheme === "dark" ? "#1c1c1e":"#ccc", color: text_color}]}
+          style={[styles.input, {backgroundColor: "#ccc", color: text_color}]}
           selectionColor={text_color}
           placeholderTextColor={text_color}
           onChangeText={(text) => {setName(text)}}
@@ -147,7 +145,7 @@ export default function CreateUserScreen() {
       <View>
         <Text style={{paddingLeft: 8}}>How many SlugPoints do you have?</Text>
         <TextInput
-          style={[styles.input, {backgroundColor: colorSheme === "dark" ? "#1c1c1e":"#ccc", color: text_color}]}
+          style={[styles.input, {backgroundColor: "#ccc", color: text_color}]}
           selectionColor={text_color}
           placeholder="0"
           onChangeText={(text) => {setSlugPoints(text)}}

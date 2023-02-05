@@ -37,7 +37,7 @@ export default function TabOneScreen({
           marginTop: 150,
           paddingBottom: 300,
         }}
-        data={data}
+        data={data.filter((e: any) => e.uid !== currUser?.uid)}
         renderItem={({ item }: any) => {
           return (
             <UserProfile
